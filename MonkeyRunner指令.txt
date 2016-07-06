@@ -1,0 +1,68 @@
+from com.android.monkeyrunner import MonkeyRunner, MonkeyDevice ,MonkeyImage
+device = MonkeyRunner.waitForConnection()
+device.installPackage("Flocation.apk")
+
+//启动其中的任意activity了，只要传入package和activity名称即可。
+device.startActivity(component = "com.tencent.mm.ui/com.tencent.mm.ui.LauncherUI")
+device.startActivity(component = "com.example.flocation/com.example.flocation.SetMockLocation")
+device.startActivity(component = "com.example.flocation/.SetMockLocation")
+
+device.startActivity(component = "com.tencent.mm.ui.chatting/.AtSomeoneUI")
+device.reboot() #手机设备重启
+
+device.touch(300,300,'DOWN_AND_UP')
+
+MonkeyRunner.alert("hello")#在emulator上会弹出消息提示
+
+device.press('KEYCODE_HOME',MonkeyDevice.DOWN_AND_UP)  #HOME 按键
+
+device.press('KEYCODE_BACK',MonkeyDevice.DOWN_AND_UP)    #返回按键
+
+device.type('hello')#向编辑区域输入文本'hello'
+
+device.wake( )         #点亮屏幕
+
+MonkeyRunner.sleep(3)  #等待3s
+
+device.drag((236,1000),(240,1000),2,10)  #滑屏：起点坐标（236，440），终点坐标（236，300）
+
+device.touch(600,800,MonkeyDevice.DOWN_AND_UP)  #点击屏幕某处，坐标值为（170，254）
+
+device.press('KEYCODE_VOLUME_UP',MonkeyDevice.DOWN_AND_UP)   #增大音量
+
+device.press('KEYCODE_VOLUME_DOWN',MonkeyDevice.DOWN_AND_UP) #减少音量
+device.press('KEYCODE_DPAD_UP',MonkeyDevice.DOWN_AND_UP)  #向上移动光标
+
+device.press('KEYCODE_DPAD_DOWN',MonkeyDevice.DOWN_AND_UP) #向下移动光标
+
+device.press('KEYCODE_DPAD_LEFT',MonkeyDevice.DOWN_AND_UP) #向左移动光标
+
+device.press('KEYCODE_DPAD_RIGHT',MonkeyDevice.DOWN_AND_UP)  #向右移动光标
+
+#############
+850,650  微信app图标
+600,1900 发现
+600 800 附近的人
+
+device.touch(850,950,MonkeyDevice.DOWN_AND_UP) #打开App
+device.touch(600,1900,MonkeyDevice.DOWN_AND_UP) #发现
+device.touch(600,800,MonkeyDevice.DOWN_AND_UP)  #打开附近的人
+device.press('KEYCODE_HOME',MonkeyDevice.DOWN_AND_UP)  #返回主菜单
+
+
+#### 对天下游的操作  手动输入坐标
+device.touch(650,950,MonkeyDevice.DOWN_AND_UP)  #打开app
+device.touch(1000,100,MonkeyDevice.DOWN_AND_UP)  #找到输入框
+device.touch(1000,500,MonkeyDevice.DOWN_AND_UP)   #找到手动输入
+device.type('40.0')   #输入维度
+device.press('KEYCODE_DPAD_DOWN',MonkeyDevice.DOWN_AND_UP) #向下移动光标
+device.type('116.55') #输入经度
+device.touch(750,1150,MonkeyDevice.DOWN_AND_UP) # 确定输入
+device.press('KEYCODE_HOME',MonkeyDevice.DOWN_AND_UP)  #返回Home
+
+
+###
+device.press('KEYCODE_DEL', MonkeyDevice.DOWN_AND_UP)  #删除单个字符
+device.type('116.55') #输入经度
+
+device.touch(100,650,MonkeyDevice.DOWN_AND_UP)  #确定输入
